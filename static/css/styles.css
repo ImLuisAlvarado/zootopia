@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+    --ink: #1f3d2b;
+    --ink-soft: #4d6b57;
+    --cream: #fafadb;
+    --paper: #fffff0;
+    --grass: #6cb042;
+    --grass-dark: #4a8a2b;
+    --sky: #378ac5;
+    --finn: #255F85;
+    --jake: #f6c744;
+    --berry: #A60067;
+    --berry-light: #f10296;
+    --danger: #D00000;
+    --line: #d9dcae;
+
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-sm: 10px;
+
+    --border: 3px solid var(--ink);
+    --shadow-hard: 6px 6px 0 var(--ink);
+    --shadow-btn: 3px 3px 0 var(--ink);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--ink);
+    background-color: var(--sky);
+    background-image: url('../assets/adventure-time-inhabitants-of-ooo-2qmbaaawho7a0j7z.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 32px 20px;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--cream);
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-hard);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0.97;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 14px;
+    background:
+        radial-gradient(circle at 10px 14px, var(--grass) 9px, transparent 10px) 0 0 / 20px 14px repeat-x,
+        var(--grass-dark);
+    border-bottom: var(--border);
+}
+
+
+h1 {
+    font-family: 'Fredoka', 'Segoe UI', sans-serif;
+    font-weight: 700;
+    color: var(--grass-dark);
+    text-align: center;
+    margin: 12px 0 6px;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+    text-shadow: 3px 3px 0 var(--ink);
+    -webkit-text-stroke: 1px var(--ink);
+    paint-order: stroke fill;
+}
+
+h2 {
+    font-family: 'Fredoka', 'Segoe UI', sans-serif;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 1.25rem;
+}
+
+
+.crud-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+
+.btn {
+    padding: 10px 20px;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: 'Fredoka', 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    box-shadow: var(--shadow-btn);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+}
+
+.btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--ink);
+}
+
+.btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--jake);
+    outline-offset: 3px;
+}
+
+.btn-create {
+    background: var(--grass);
+    color: var(--ink);
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+.btn-create:hover {
+    background: #7cc552;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-view {
+    padding: 6px 12px;
+    font-size: 13px;
+    box-shadow: 2px 2px 0 var(--ink);
+}
+
+.btn-edit:hover,
+.btn-delete:hover,
+.btn-view:hover {
+    box-shadow: 3px 3px 0 var(--ink);
+}
+
+.btn-edit {
+    background: var(--finn);
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background: #2f7aa8;
+}
+
+.btn-delete {
+    background: var(--danger);
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background: #ee1c1c;
+}
+
+.btn-view {
+    background: var(--berry);
+    color: #fff;
+}
+
+.btn-view:hover {
+    background: var(--berry-light);
+}
+
+
+.table-container {
+    overflow-x: auto;
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: 4px 4px 0 var(--ink);
+    background: var(--paper);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper);
+}
+
+thead {
+    background: linear-gradient(135deg, var(--grass) 0%, var(--sky) 100%);
+    color: #fff;
+    border-bottom: var(--border);
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+th {
+    font-family: 'Fredoka', 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+    text-shadow: 1px 1px 0 rgba(31, 61, 43, 0.55);
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(108, 176, 66, 0.08);
+}
+
+tbody tr:hover {
+    background: rgba(246, 199, 68, 0.28);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.actions-cell {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+
+.empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--ink-soft);
+    font-family: 'Fredoka', 'Segoe UI', sans-serif;
+    font-size: 1.1rem;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        padding: 16px 12px;
+    }
+
+    .container {
+        padding: 28px 16px 20px;
+        box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    h2 {
+        font-size: 1.05rem;
+        margin-bottom: 24px;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .btn-create {
+        width: 100%;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    tbody tr {
+        transition: none;
+    }
+
+    .btn:hover,
+    .btn:active {
+        transform: none;
+    }
+}

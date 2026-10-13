@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{{ titulo }} - Zoológico Tilapia</title>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ titulo }}</h1>
+
+        {% if errores %}
+        <ul class="errores">
+            {% for e in errores %}<li>{{ e }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+
+        <form method="post">
+            <label>Nombre
+                <input type="text" name="nombre" value="{{ animal.nombre or '' }}" required>
+            </label>
+            <label>Especie
+                <input type="text" name="especie" value="{{ animal.especie or '' }}" required>
+            </label>
+            <label>Color
+                <input type="text" name="color" value="{{ animal.color or '' }}">
+            </label>
+            <label>Edad
+                <input type="number" name="edad" min="0" value="{{ animal.edad if animal.edad is not none else '' }}" required>
+            </label>
+
+            <button type="submit" class="btn btn-create">Guardar</button>
+            <a href="{{ url_for('index') }}" class="btn btn-create">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

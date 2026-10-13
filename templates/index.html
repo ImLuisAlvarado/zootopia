@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <title>Zoológico Tilapia</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bienvenido al Zoológico Tilapia</h1>
+        <h2>Estos son nuestros animales disponibles</h2>
+        
+        <div class="crud-actions">
+            <a href="/animales/nuevo" class="btn btn-create">Nuevo Animal</a>
+        </div>
+        
+        <div class="table-container">
+            <table id="tbl_animales">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Especie</th>
+                        <th>Color</th>
+                        <th>Edad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if animales %}
+                        {% for animal in animales %}
+                        <tr>
+                            <td><strong>{{ animal.nombre }}</strong></td>
+                            <td>{{ animal.especie }}</td>
+                            <td>{{ animal.color }}</td>
+                            <td>{{ animal.edad }} años</td>
+                            <td>
+                                <div class="actions-cell">
+                                    <a href="/animales/{{ animal.id }}/editar" class="btn btn-edit">Editar</a>
+                                    <form action="{{ url_for('eliminar', animal_id=animal.id) }}" method="post"
+                                        onsubmit="return confirm('¿Estás seguro de eliminar este animal?')">
+                                        <button type="submit" class="btn btn-delete">Eliminar</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="empty-state">
+                                No hay animales registrados. Nada que ver aquí
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
